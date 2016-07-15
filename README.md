@@ -108,3 +108,10 @@ module.exports = {
 webpack-dev-server --progress --colors
 ```
 - Open browser and go to http://localhost:8080/. The greeting message should be there.
+
+### Next steps
+Given the ultimate goal is to build an actual SPA, following steps are put on the road map.
+- Put on an elegant UI such as [Material-UI](http://www.material-ui.com/).
+- Integrate with Redux
+- Integrate with back-end ASP.NET Web API
+- ...
