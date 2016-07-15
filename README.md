@@ -5,14 +5,14 @@ My first React sample
 Make sure [NodeJS](https://nodejs.org/) is already installed in your machine.
 
 ### Create project folder structure
-```
+```sh
 mkdir hello-react
 cd hello-react
 mkdir app
 mkdir public
 ```
 ### Initialize the project manifest
-```
+```sh
 npm init
 ```
 ### Install necessary Webpack and Babel modules
@@ -33,7 +33,7 @@ npm install --save react-dom
 ```
 ### Start coding now
 - Create `index.html` file in `public` folder and add following lines of code
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,7 +47,7 @@ npm install --save react-dom
 </html>
 ```
 - Create `hello.jsx` file in `app` folder and add following lines of code
-```
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
  
