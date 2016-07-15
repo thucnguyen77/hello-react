@@ -18,7 +18,7 @@ npm init
 ### Install necessary Webpack and Babel modules
 ```
 npm install --save-dev webpack
-npm install -g webpack-dev-server
+npm install --save-dev webpack-dev-server
 
 npm install --save-dev babel-core
 npm install --save-dev babel-loader
@@ -31,19 +31,6 @@ npm install --save-dev babel-preset-react
 npm install --save react
 npm install --save react-dom
 ```
-### Configure Webpack
-- Create a `webpack.config.js` file in root folder
-- Add following lines to `webpack.config.js` file
-
-```
-module.exports = {
-  entry:  __dirname + "/app/main.js",
-  output: {
-    path: __dirname + "/public",
-    filename: "index.js"
-  }
-}
-```
 ### Start coding now
 - Create `index.html` file in `public` folder and add following lines of code
 ```
@@ -55,7 +42,7 @@ module.exports = {
     </head>
     <body>
         <div id="app"></div>
-        <script src="index.js" />
+        <script src="index.js"></script>
     </body>
 </html>
 ```
@@ -76,3 +63,48 @@ ReactDOM.render(<Hello/>, document.getElementById('app'));
 ```
 import Hello from './hello.jsx';
 ```
+### Configure Webpack
+- Create a `webpack.config.js` file in root folder
+- Add following lines to `webpack.config.js` file
+
+```
+module.exports = {
+  devtool: 'eval-source-map',
+
+  entry:  __dirname + "/app/main.js",
+  output: {
+    path: __dirname + "/public",
+    filename: "index.js"
+  },
+
+  module: {
+    loaders: [
+      {
+        test: /\.json$/,
+        loader: "json"
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015','react']
+        }
+      }
+    ]
+  },
+
+  devServer: {
+    contentBase: "./public",
+    colors: true,
+    historyApiFallback: true,
+    inline: true
+  }
+}
+```
+### Run the app now
+- Go back to command prompt window and run following command.
+```
+webpack-dev-server --progress --colors
+```
+- Open browser and go to http://localhost:8080/. The greeting message should be there.
